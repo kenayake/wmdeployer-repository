@@ -1,8 +1,8 @@
 <asset_composite xmlns="http://namespaces.softwareag.com/acdl/1.0" targetNamespace="http://namespaces.softwareag.com/webMethods/IS" name="UnangTranslatorCrud" runtimeVersion="11.1.0.0">
   <implementation.generic type="ispackage" />
-  <buildInfo name="build.version" value="1.0.10" />
-  <buildInfo name="BuildVersion" value="1.0.10" />
-  <buildInfo name="BuildTimestamp" value="2025-07-25T10:32:35" />
+  <buildInfo name="build.version" value="1.0.16" />
+  <buildInfo name="BuildVersion" value="1.0.16" />
+  <buildInfo name="BuildTimestamp" value="2025-07-25T17:19:31" />
   <buildInfo name="MinimumTargetRuntimeVersion" value="${watt.server.deployer.targetVersion}" />
   <property name="activatePkgOnInstall" displayName="Activate Package On Install">
     <value>true</value>

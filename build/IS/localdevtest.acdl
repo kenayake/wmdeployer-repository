@@ -1,0 +1,49 @@
+<asset_composite xmlns="http://namespaces.softwareag.com/acdl/1.0" targetNamespace="http://namespaces.softwareag.com/webMethods/IS" name="localdevtest" runtimeVersion="11.1.0.0">
+  <implementation.generic type="ispackage" />
+  <buildInfo name="build.version" value="1.0.16" />
+  <buildInfo name="BuildVersion" value="1.0.16" />
+  <buildInfo name="BuildTimestamp" value="2025-07-25T17:19:31" />
+  <buildInfo name="MinimumTargetRuntimeVersion" value="${watt.server.deployer.targetVersion}" />
+  <property name="activatePkgOnInstall" displayName="Activate Package On Install">
+    <value>true</value>
+  </property>
+  <property name="archivePkgOnInstall" displayName="Archive Package On Install">
+    <value>true</value>
+  </property>
+  <property name="compilePackage" displayName="Compile Package On Install">
+    <value>true</value>
+  </property>
+  <property name="fragPackage" displayName="Fragment Package On Install">
+    <value>true</value>
+  </property>
+  <property name="clearACLs" displayName="Delete ACLs for the assets from the target Integration Server">
+    <value>false</value>
+  </property>
+  <property name="disallowActivePackageInstall" displayName="Disallow Active Package Install">
+    <value>false</value>
+  </property>
+  <property name="packageExecutionCheck" displayName="Package Execution Check">
+    <value>0</value>
+  </property>
+  <property name="suspendTriggersDuringDeploy" displayName="Suspend Triggers During Deployment">
+    <value>false</value>
+  </property>
+  <property name="syncDocTypesToBroker" displayName="Synchronize Document Types During Deployment">
+    <value>true</value>
+  </property>
+  <property name="restartRuntimes" displayName="restartRuntimes">
+    <value>false</value>
+  </property>
+  <asset name="ISPackage.localdevtest" displayName="localdevtest">
+    <implementation.generic type="ispackage" />
+  </asset>
+  <asset name="perkele.surstromming" displayName="perkele:surstromming">
+    <implementation.generic type="isflowservice" />
+  </asset>
+  <asset name="localdevtest.config" displayName="config">
+    <implementation.generic type="isfolder" />
+  </asset>
+  <asset name="localdevtest.pub" displayName="pub">
+    <implementation.generic type="isfolder" />
+  </asset>
+</asset_composite>
