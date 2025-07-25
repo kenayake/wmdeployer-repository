@@ -1,0 +1,173 @@
+<asset_composite xmlns="http://namespaces.softwareag.com/acdl/1.0" targetNamespace="http://namespaces.softwareag.com/webMethods/IS" name="UnangTranslatorCrud" runtimeVersion="11.1.0.0">
+  <implementation.generic type="ispackage" />
+  <buildInfo name="build.version" value="1.0.10" />
+  <buildInfo name="BuildVersion" value="1.0.10" />
+  <buildInfo name="BuildTimestamp" value="2025-07-25T10:32:35" />
+  <buildInfo name="MinimumTargetRuntimeVersion" value="${watt.server.deployer.targetVersion}" />
+  <property name="activatePkgOnInstall" displayName="Activate Package On Install">
+    <value>true</value>
+  </property>
+  <property name="archivePkgOnInstall" displayName="Archive Package On Install">
+    <value>true</value>
+  </property>
+  <property name="compilePackage" displayName="Compile Package On Install">
+    <value>true</value>
+  </property>
+  <property name="fragPackage" displayName="Fragment Package On Install">
+    <value>true</value>
+  </property>
+  <property name="clearACLs" displayName="Delete ACLs for the assets from the target Integration Server">
+    <value>false</value>
+  </property>
+  <property name="disallowActivePackageInstall" displayName="Disallow Active Package Install">
+    <value>false</value>
+  </property>
+  <property name="packageExecutionCheck" displayName="Package Execution Check">
+    <value>0</value>
+  </property>
+  <property name="suspendTriggersDuringDeploy" displayName="Suspend Triggers During Deployment">
+    <value>false</value>
+  </property>
+  <property name="syncDocTypesToBroker" displayName="Synchronize Document Types During Deployment">
+    <value>true</value>
+  </property>
+  <property name="restartRuntimes" displayName="restartRuntimes">
+    <value>false</value>
+  </property>
+  <asset name="ISPackage.UnangTranslatorCrud" displayName="UnangTranslatorCrud">
+    <implementation.generic type="ispackage" />
+  </asset>
+  <asset name="apis.UnangTranslatorApiResource_.docTypes.UnangTranslatorApiResource" displayName="apis.UnangTranslatorApiResource_.docTypes:UnangTranslatorApiResource">
+    <implementation.generic type="isdocumenttype" />
+  </asset>
+  <asset name="apis.UnangTranslatorApiResource" displayName="apis:UnangTranslatorApiResource">
+    <implementation.generic type="isrestresource" />
+    <dependsOn>IS:services.GetTranslationHistory</dependsOn>
+    <dependsOn>IS:services.TranslateToUnang</dependsOn>
+    <dependsOn>IS:services.DeleteFromTranslationHistory</dependsOn>
+    <dependsOn>IS:services.GetOneTranslationHistory</dependsOn>
+    <dependsOn>IS:services.TranslateToIndo</dependsOn>
+    <dependsOn>IS:services.UpdateSomething</dependsOn>
+    <dependsOn>IS:services.GetOneSomething</dependsOn>
+  </asset>
+  <asset name="test_transactions.query_3" displayName="test_transactions:query_3">
+    <implementation.generic type="isflowservice" />
+    <dependsOn>IS:JNDS.sqlStandard.executeInsert</dependsOn>
+  </asset>
+  <asset name="test_transactions.query_1" displayName="test_transactions:query_1">
+    <implementation.generic type="isflowservice" />
+    <dependsOn>IS:JNDS.sqlStandard.executeInsert</dependsOn>
+  </asset>
+  <asset name="test_transactions.main_flow" displayName="test_transactions:main_flow">
+    <implementation.generic type="isflowservice" />
+    <dependsOn>IS:test_transactions.query_1</dependsOn>
+    <dependsOn>IS:JNDS.sqlStandard.executeQueryFirst</dependsOn>
+    <dependsOn>IS:test_transactions.query_3</dependsOn>
+  </asset>
+  <asset name="push_me.push_me_harder" displayName="push_me:push_me_harder">
+    <implementation.generic type="isflowservice" />
+  </asset>
+  <asset name="services.TranslateToUnang" displayName="services:TranslateToUnang">
+    <implementation.generic type="isflowservice" />
+    <dependsOn>IS:JNDS.models.Status</dependsOn>
+    <dependsOn>IS:logic.indoToUnang</dependsOn>
+    <dependsOn>IS:utils.SaveTranslation</dependsOn>
+  </asset>
+  <asset name="services.GetOneTranslationHistory" displayName="services:GetOneTranslationHistory">
+    <implementation.generic type="isflowservice" />
+    <dependsOn>IS:JNDS.models.Status</dependsOn>
+    <dependsOn>IS:JNDS.sqlStandard.executeQueryFirst</dependsOn>
+  </asset>
+  <asset name="services.UpdateSomething" displayName="services:UpdateSomething">
+    <implementation.generic type="isflowservice" />
+    <dependsOn>IS:models.UpdateBody</dependsOn>
+    <dependsOn>IS:JNDS.models.Status</dependsOn>
+    <dependsOn>IS:JNDS.sqlStandard.executeUpdate</dependsOn>
+  </asset>
+  <asset name="services.add" displayName="services:add">
+    <implementation.generic type="isflowservice" />
+  </asset>
+  <asset name="services.GetOneSomething" displayName="services:GetOneSomething">
+    <implementation.generic type="isflowservice" />
+    <dependsOn>IS:JNDS.models.Status</dependsOn>
+    <dependsOn>IS:JNDS.sqlStandard.executeQueryList</dependsOn>
+  </asset>
+  <asset name="services.TranslateToIndo" displayName="services:TranslateToIndo">
+    <implementation.generic type="isflowservice" />
+    <dependsOn>IS:JNDS.models.Status</dependsOn>
+    <dependsOn>IS:logic.unangToIndo</dependsOn>
+    <dependsOn>IS:utils.SaveTranslation</dependsOn>
+  </asset>
+  <asset name="services.GetTranslationHistory" displayName="services:GetTranslationHistory">
+    <implementation.generic type="isflowservice" />
+    <dependsOn>IS:models.TranslationHistory</dependsOn>
+    <dependsOn>IS:JNDS.models.Status</dependsOn>
+    <dependsOn>IS:JNDS.sqlStandard.executeQueryList</dependsOn>
+  </asset>
+  <asset name="services.DeleteFromTranslationHistory" displayName="services:DeleteFromTranslationHistory">
+    <implementation.generic type="isflowservice" />
+    <dependsOn>IS:JNDS.models.Status</dependsOn>
+    <dependsOn>IS:JNDS.sqlStandard.executeDelete</dependsOn>
+  </asset>
+  <asset name="sftp.sftpAccessFlow" displayName="sftp:sftpAccessFlow">
+    <implementation.generic type="isflowservice" />
+  </asset>
+  <asset name="models.TranslationHistory" displayName="models:TranslationHistory">
+    <implementation.generic type="isdocumenttype" />
+  </asset>
+  <asset name="models.UpdateBody" displayName="models:UpdateBody">
+    <implementation.generic type="isdocumenttype" />
+  </asset>
+  <asset name="logic.indoToUnang" displayName="logic:indoToUnang">
+    <implementation.generic type="isjavaservice" />
+    <dependsOn>IS:UnangTranslatorCrud.code.source.logic.java</dependsOn>
+    <dependsOn>IS:UnangTranslatorCrud.code.classes.logic.class</dependsOn>
+    <dependsOn>IS:logic.unangToIndo</dependsOn>
+  </asset>
+  <asset name="logic.unangToIndo" displayName="logic:unangToIndo">
+    <implementation.generic type="isjavaservice" />
+    <dependsOn>IS:UnangTranslatorCrud.code.source.logic.java</dependsOn>
+    <dependsOn>IS:UnangTranslatorCrud.code.classes.logic.class</dependsOn>
+    <dependsOn>IS:logic.indoToUnang</dependsOn>
+  </asset>
+  <asset name="callApi.callBookingCom" displayName="callApi:callBookingCom">
+    <implementation.generic type="isflowservice" />
+    <dependsOn>IS:JNDS.log.getGlobalVariable</dependsOn>
+    <dependsOn>IS:JNDS.http.callService</dependsOn>
+    <dependsOn>IS:JNDS.log.writeLog</dependsOn>
+  </asset>
+  <asset name="utils.SaveTranslation" displayName="utils:SaveTranslation">
+    <implementation.generic type="isflowservice" />
+    <dependsOn>IS:JNDS.sqlStandard.executeInsert</dependsOn>
+  </asset>
+  <asset name="UnangTranslatorCrud.code" displayName="code">
+    <implementation.generic type="isfolder" />
+  </asset>
+  <asset name="UnangTranslatorCrud.code.classes" displayName="code/classes">
+    <implementation.generic type="isfolder" />
+  </asset>
+  <asset name="UnangTranslatorCrud.code.classes.logic.class" displayName="code/classes/logic.class">
+    <implementation.generic type="isfile" />
+  </asset>
+  <asset name="UnangTranslatorCrud.code.jars" displayName="code/jars">
+    <implementation.generic type="isfolder" />
+  </asset>
+  <asset name="UnangTranslatorCrud.code.source" displayName="code/source">
+    <implementation.generic type="isfolder" />
+  </asset>
+  <asset name="UnangTranslatorCrud.code.source.logic.java" displayName="code/source/logic.java">
+    <implementation.generic type="isfile" />
+  </asset>
+  <asset name="UnangTranslatorCrud.config" displayName="config">
+    <implementation.generic type="isfolder" />
+  </asset>
+  <asset name="UnangTranslatorCrud.lib" displayName="lib">
+    <implementation.generic type="isfolder" />
+  </asset>
+  <asset name="UnangTranslatorCrud.pub" displayName="pub">
+    <implementation.generic type="isfolder" />
+  </asset>
+  <asset name="UnangTranslatorCrud.resources" displayName="resources">
+    <implementation.generic type="isfolder" />
+  </asset>
+</asset_composite>
